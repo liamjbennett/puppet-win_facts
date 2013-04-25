@@ -5,7 +5,6 @@
 #
 # Written to determine the computer SID for the current windows machine.
 #
-
 Facter.add("windows_sid") do
   confine :kernel => :windows
   

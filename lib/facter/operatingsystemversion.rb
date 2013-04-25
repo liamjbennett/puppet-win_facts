@@ -5,7 +5,6 @@
 #
 # Written to work out the version of windows that the client is currently being run on.
 #
-
 Facter.add("operatingsystemversion") do
   confine :kernel => :windows
   

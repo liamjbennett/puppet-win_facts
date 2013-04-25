@@ -5,7 +5,6 @@
 #
 # Written to decode and return the product key license for the running windows instance.
 #
-
 Facter.add("windows_productkey") do
   confine :kernel => :windows
   
