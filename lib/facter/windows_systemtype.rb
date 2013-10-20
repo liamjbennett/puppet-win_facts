@@ -15,6 +15,7 @@ Facter.add("windows_systemtype") do
     if RUBY_PLATFORM.downcase.include?("mswin") or RUBY_PLATFORM.downcase.include?("mingw32")
       systemtype = Facter::Util::Resolution.exec('wmic ComputerSystem get SystemType | FindStr /i x')
       systemtype.gsub!(/-based PC/,'')
+      systemtype.gsub!(/\s/,'')
       systemtype.downcase!
     end
   rescue
