@@ -14,8 +14,7 @@ Facter.add("windows_sid") do
     if RUBY_PLATFORM.downcase.include?("mswin") or RUBY_PLATFORM.downcase.include?("mingw32")
       require 'win32/registry'
       
-      KEY_WOW64_64KEY = 0x100 unless defined? KEY_WOW64_64KEY
-      access = Win32::Registry::KEY_READ | KEY_WOW64_64KEY
+      access = Win32::Registry::KEY_READ | 0x100
       key = 'Software\Microsoft\Windows\CurrentVersion\Group Policy'
     
       Win32::Registry::HKEY_LOCAL_MACHINE.open(key, access) do |reg|
