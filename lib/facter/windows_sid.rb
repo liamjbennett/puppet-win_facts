@@ -5,13 +5,13 @@
 #
 # Written to determine the computer SID for the current windows machine.
 #
-Facter.add("windows_sid") do
+Facter.add('windows_sid') do
   confine :kernel => :windows
   
-  productkey = "unknown"
+  sid = 'unknown'
   begin
     
-    if RUBY_PLATFORM.downcase.include?("mswin") or RUBY_PLATFORM.downcase.include?("mingw32")
+    if RUBY_PLATFORM.downcase.include?('mswin') or RUBY_PLATFORM.downcase.include?('mingw32')
       require 'win32/registry'
       
       KEY_WOW64_64KEY = 0x100 unless defined? KEY_WOW64_64KEY
@@ -21,7 +21,7 @@ Facter.add("windows_sid") do
       Win32::Registry::HKEY_LOCAL_MACHINE.open(key, access) do |reg|
         reg.keys.each do |key|
           if key.start_with?('S-1-5-21')
-            productkey = key.gsub(/-500$/,"")   
+            sid = key.gsub(/-500$/,"")   
           end
         end
       end
@@ -31,6 +31,6 @@ Facter.add("windows_sid") do
   end
 
   setcode do
-    productkey
+    sid
   end
 end

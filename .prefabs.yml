@@ -1,0 +1,12 @@
+---
+'windows_2008r2':
+  description: ""
+  facts:
+    operatingsystem: windows
+    architecture: x86_64
+    osfamily: windows
+    kernel: windows
+  provider_specifics:
+    vagrant_virtualbox:
+      box: 'windows_2008_r2'
+      box_url: '/Users/lbennett/packer-boxes/windows_2008_r2_virtualbox.box'
