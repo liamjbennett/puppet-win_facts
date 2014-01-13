@@ -8,3 +8,10 @@ sets:
         options:
           gui: true
           ip: 10.0.2.15
+  'windows_2012':
+    nodes:
+      'windows-2012':
+        prefab: 'windows_2012'
+        options:
+          gui: true
+          ip: 10.0.2.15
